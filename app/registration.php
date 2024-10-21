@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
         mysqli_query($conn, $sql);
             echo "<script> alerte('Registration Successful'); </script>";
         } else {
-            echo "<script> alerte('Password does not match'); </script>"
+            echo "<script> alerte('Password does not match'); </script>";
         }
     }
 
