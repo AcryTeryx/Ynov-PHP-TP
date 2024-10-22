@@ -1,0 +1,28 @@
+header {
+    background-color: #2f4f6f; /* couleur bleu foncé similaire à l'image */
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 25px; /* espacement plus large entre les liens */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px; /* augmenter la taille de la police */
+    font-weight: bold; /* pour que le texte soit épais comme dans l'image */
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff6347; /* couleur de survol */
+}

@@ -1,0 +1,57 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.cv {
+    margin-bottom: 20px;
+}
+
+.cv h2 {
+    color: #007bff;
+}
+
+.cv p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.cv pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.cv img {
+    display: block;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.btn-delete {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #cc0000;
+}
