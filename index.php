@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+// print_r($_SESSION);
 
 $user = null;
 
@@ -8,7 +9,7 @@ if (isset($_SESSION["user_id"])) {
     $mysqli = require __DIR__ . "/database.php";
     $user_id = $_SESSION["user_id"];
     
-
+    // Prepare the SQL statement to prevent SQL injection
     $sql = "SELECT * FROM users WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $user_id);
