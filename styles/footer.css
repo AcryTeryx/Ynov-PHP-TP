@@ -2,20 +2,16 @@ footer {
     background-color: #2f4f6f;
     padding: 20px;
     text-align: center;
-    font-family: Arial, sans-serif;
 }
-
 footer p {
     margin: 10px 0;
-    color: #333;
+    color: #e2e8f0;
 }
-
 footer a {
-    color: #007BFF;
+    color: #63b3ed;
     text-decoration: none;
     margin: 0 10px;
 }
-
 footer a:hover {
     text-decoration: underline;
 }

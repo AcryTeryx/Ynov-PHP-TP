@@ -143,6 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <header>
         <nav>
             <ul>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="user_profile.php">Profile</a></li>
                 <li><a href="cv.php">CV</a></li>
                 <li><a href="projects.php">Mes projets</a></li>

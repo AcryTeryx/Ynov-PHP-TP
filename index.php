@@ -130,23 +130,6 @@ if (isset($_SESSION["user_id"])) {
         .login-button:hover {
             background-color: #38a169;
         }
-        footer {
-            background-color: #2f4f6f;
-            padding: 20px;
-            text-align: center;
-        }
-        footer p {
-            margin: 10px 0;
-            color: #e2e8f0;
-        }
-        footer a {
-            color: #63b3ed;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
