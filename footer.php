@@ -11,9 +11,9 @@
             <div style="text-align: center; padding: 20px; background-color: #f1f1f1;">
                 <p>&copy; <?php echo date("Y"); ?> Ynov-CV web</p>
                 <p>
-                    <a href="privacy-policy.php">Privacy Policy ( no link )</a> | 
-                    <a href="terms-of-service.php">Terms of Service ( no link )</a> | 
-                    <a href="contact-us.php">Contact Us ( no link )</a>
+                    <a href="https://github.com/AcryTeryx/Ynov-PHP-TP">Project's GitHub</a> | 
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Sponsor of the site </a> | 
+                    <a href="https://discord.gg/dUGSC27329">Contact Me on Discord</a>
                 </p>
             </div>
         </footer>
