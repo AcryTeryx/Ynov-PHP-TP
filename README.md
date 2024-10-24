@@ -57,8 +57,7 @@ Ce projet consiste à réaliser un site web de CV/Portfolio comprenant plusieurs
 ## Installation
 
 1. Clonez ce dépôt.
-2. Installez les dépendances via un gestionnaire de paquets.
-3. Démarrez le serveur local avec `Laragon` et déposez ce répo dans le fichier laragon `www`.
+2. Démarrez le serveur local avec `Laragon` et déposez ce répo dans le fichier laragon `www`.
 
 ## Utilisation
 
