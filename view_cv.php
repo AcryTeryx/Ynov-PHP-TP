@@ -25,8 +25,8 @@ $cvs = $result->fetch_all(MYSQLI_ASSOC);
     <link rel="stylesheet" href="styles/view_cv.css">
     <title>Voir mes CV</title>
 </head>
-<?php include 'header.php'; ?>
 <body>
+    <?php include 'header.php'; ?>
     <div class="container">
         <h1>Voir mes CV</h1>
         <?php if (count($cvs) > 0): ?>

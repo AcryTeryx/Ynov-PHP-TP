@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/project.css">
+    <link rel="stylesheet" href="styles/create_project.css">
     <title>Créer un projet</title>
 </head>
 <?php include 'header.php'; ?>

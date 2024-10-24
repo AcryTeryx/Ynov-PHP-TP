@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user information
+
 $query = "SELECT * FROM users WHERE id = ?";
 $stmt = $mysqli->prepare($query);
 $stmt->bind_param('i', $user_id);
@@ -20,19 +20,19 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-// Handle form submission for profile update
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Update user information (implement this part based on your needs)
-    // Remember to sanitize and validate input data
+   
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Profile</title>
+    <title>Admin Panel</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <main>
         <div class="profile-container">
-            <h1>Admin Profile</h1>
+            <h1>Admin Panel</h1>
             <div class="profile-info">
                 <div class="info-group">
                     <span class="info-label">Name:</span>

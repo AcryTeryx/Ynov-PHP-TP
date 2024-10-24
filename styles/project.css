@@ -1,13 +1,7 @@
-/* Généralités */
-
-a {
-    color: #4780b6;
-    text-decoration: none;
-}
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #1a202c;
+    color: #e2e8f0;
     margin: 0;
     padding: 0;
 }
@@ -18,9 +12,24 @@ body {
     padding: 20px;
 }
 
+a {
+    color: #63b3ed;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    color: #63b3ed;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
 /* Style pour les projets */
 .project-card {
-    background-color: #fff;
+    background-color: #2d3748;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
@@ -36,10 +45,11 @@ body {
     font-size: 1.5em;
     margin: 0;
     padding-bottom: 10px;
+    color: #63b3ed;
 }
 
 .project-description {
-    color: #666;
+    color: #a0aec0;
     margin-bottom: 20px;
 }
 
@@ -53,75 +63,51 @@ body {
 
 /* Projet validé */
 .validated {
-    color: #155724;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
+    color: #68d391;
+    background-color: #2f855a;
+    border: 1px solid #38a169;
 }
 
 /* Projet en attente de validation */
 .pending {
-    color: #856404;
-    background-color: #fff3cd;
-    border: 1px solid #ffeeba;
-}
-
-/* Formulaire de création de projet */
-form {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-form input[type="text"],
-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-form input[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-form input[type="submit"]:hover {
-    background-color: #0056b3;
+    color: #faf089;
+    background-color: #744210;
+    border: 1px solid #975a16;
 }
 
 /* En-tête et pied de page */
-header {
-    background-color: #333;
-    color: white;
+header, footer {
+    background-color: #2f4f6f;
+    color: #e2e8f0;
     padding: 10px 0;
     text-align: center;
+}
+
+header {
     margin-bottom: 20px;
 }
 
 footer {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
     margin-top: 40px;
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-a:hover {
-    text-decoration: underline;
+li {
+    background-color: #2d3748;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+li h2 {
+    color: #63b3ed;
+    margin-top: 0;
+}
+
+li p {
+    color: #a0aec0;
 }

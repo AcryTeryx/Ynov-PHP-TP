@@ -8,7 +8,7 @@
 </head>
     <body>
         <footer>
-            <div style="text-align: center; padding: 20px; background-color: #f1f1f1;">
+            <div style="text-align: center; padding: 2px ; position: relative">
                 <p>&copy; <?php echo date("Y"); ?> Ynov-CV web</p>
                 <p>
                     <a href="https://github.com/AcryTeryx/Ynov-PHP-TP">Project's GitHub</a> | 
