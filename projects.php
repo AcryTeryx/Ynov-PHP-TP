@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-// Inclure le fichier database.php pour la connexion à la base de données
+
 $mysqli = require __DIR__ . '/database.php';
 
-// Vérifie si l'utilisateur est connecté
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Récupération des projets de l'utilisateur
+
 $query = "SELECT * FROM projects WHERE user_id = ?";
 $stmt = $mysqli->prepare($query);
 $stmt->bind_param('i', $user_id);

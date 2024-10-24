@@ -8,7 +8,7 @@ if (isset($_SESSION["user_id"])) {
     $mysqli = require __DIR__ . "/database.php";
     $user_id = $_SESSION["user_id"];
     
-    // Fetch user data
+    
     $sql = "SELECT * FROM users WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $user_id);
@@ -18,7 +18,7 @@ if (isset($_SESSION["user_id"])) {
     if ($result) {
         $user = $result->fetch_assoc();
         
-        // Fetch user's CVs
+       
         $cv_sql = "SELECT * FROM cvs WHERE user_id = ?";
         $cv_stmt = $mysqli->prepare($cv_sql);
         $cv_stmt->bind_param("i", $user_id);

@@ -5,7 +5,7 @@ $is_invalid = false;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $mysqli = require __DIR__ . "/database.php";
   
-  // Prepare the SQL statement to prevent SQL injection
+
   $sql = "SELECT * FROM users WHERE email = ?";
   $stmt = $mysqli->prepare($sql);
   $stmt->bind_param("s", $_POST["email"]);

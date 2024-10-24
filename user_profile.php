@@ -1,10 +1,8 @@
 <?php
 session_start();
 
-// Include database connection
 $mysqli = require __DIR__ . '/database.php';
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
@@ -12,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user information
+
 $query = "SELECT * FROM users WHERE id = ?";
 $stmt = $mysqli->prepare($query);
 $stmt->bind_param('i', $user_id);
@@ -20,10 +18,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-// Handle form submission for profile update
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Update user information (implement this part based on your needs)
-    // Remember to sanitize and validate input data
+    
 }
 ?>
 
