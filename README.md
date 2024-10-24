@@ -57,21 +57,20 @@ Ce projet consiste à réaliser un site web de CV/Portfolio comprenant plusieurs
 ## Installation
 
 1. Clonez ce dépôt.
-2. Installez les dépendances via `npm install` ou un autre gestionnaire de paquets.
-3. Démarrez le serveur local avec `npm start`.
+2. Installez les dépendances via un gestionnaire de paquets.
+3. Démarrez le serveur local avec `Laragon` et déposez ce répo dans le fichier laragon `www`.
 
 ## Utilisation
 
-1. Créez un compte ou connectez-vous avec vos identifiants existants.
+1. Créez un compte ou connectez vous avec un compte admin ou `bigthomas@admin.ynov` / `password` .
 2. Naviguez à travers le menu pour gérer votre CV et vos projets.
-3. Accédez au panneau d'administration si vous disposez des droits d'administrateur.
+3. Accédez au panneau d'administration si vous disposez des droits d'administrateur ou grace au compte donnée au préalable.
 
 ## Technologies utilisées
-- **Frontend** : HTML, CSS, JavaScript
-- **Backend** : Node.js, Express
-- **Base de données** : MongoDB ou autre système de gestion de base de données
-- **Authentification** : JWT (JSON Web Tokens)
+- **Frontend** : HTML, CSS
+- **Backend** : Php
+- **Base de données** : MySQL , PhpMyAdmin
 
 ## Auteur
 
-Ce projet a été développé par [Votre nom].
+Ce projet a été développé par Laucournet Thomas , B2 Ynov projet Php 2024-2025
