@@ -137,7 +137,7 @@ if (isset($_SESSION["user_id"])) {
 
     <main>
         <div class="container">
-            <h1>CV created</h1>
+            <h1>Own CV created</h1>
             <?php if ($user): ?>
                 <div class="cv-list">
                     <?php if (count($cvs) > 0): ?>

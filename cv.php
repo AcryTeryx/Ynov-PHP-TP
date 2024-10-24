@@ -174,9 +174,9 @@ $cvs = $result->fetch_all(MYSQLI_ASSOC);
         <div>
             <p>&copy; <?php echo date("Y"); ?> Ynov-CV web</p>
             <p>
-                <a href="privacy-policy.php">Politique de confidentialité</a> | 
-                <a href="terms-of-service.php">Conditions d'utilisation</a> | 
-                <a href="contact-us.php">Contactez-nous</a>
+                    <a href="https://github.com/AcryTeryx/Ynov-PHP-TP">Project's GitHub</a> | 
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Sponsor of the site </a> | 
+                    <a href="https://discord.gg/dUGSC27329">Contact Me on Discord</a>
             </p>
         </div>
     </footer>
