@@ -5,9 +5,9 @@ $user = null;
 $cvs = [];
 
 if (isset($_SESSION["user_id"])) {
-    $mysqli = require __DIR__ . "/database.php";
+    $mysqli = require __DIR__ ."/database.php";
     $user_id = $_SESSION["user_id"];
-    
+
     
     $sql = "SELECT * FROM users WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
@@ -133,7 +133,7 @@ if (isset($_SESSION["user_id"])) {
     </style>
 </head>
 <body>
-    <?php include "header.php"; ?>
+    <?php include __DIR__ . "/app/header.php"; ?>
 
     <main>
         <div class="container">
@@ -153,21 +153,21 @@ if (isset($_SESSION["user_id"])) {
                     <?php endif; ?>
                 </div>
                 <div class="button-group">
-                    <a href="create_cv.php" class="button create-button">Create New CV</a>
+                    <a href="app/func/create_cv.php" class="button create-button">Create New CV</a>
                 </div>
             <?php else: ?>
                 <p>Please log in to view and manage your CVs.</p>
                 <div class="button-group">
-                    <a href="login.php" class="button login-button">Log In</a>
+                    <a href="app/func/login.php" class="button login-button">Log In</a>
                 </div>
             <?php endif; ?>
         </div>
     </main>
         <?php if (isset($user) && isset($user['role']) && $user['role'] === 'admin'): ?>
         <div class="button-group">
-            <a href="admin.php" class="button create-button">Admin Panel</a>
+            <a href="/app/admin.php" class="button create-button">Admin Panel</a>
         </div>
     <?php endif; ?>
-    <?php include "footer.php"; ?>
+    <?php include __DIR__ . "/app/footer.php"; ?>
 </body>
 </html>

@@ -2,11 +2,11 @@
 session_start();
 
 // Include database connection
-$mysqli = require __DIR__ . '/database.php';
+$mysqli = require __DIR__ . '/../../database.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: /app/func/login.php');
     exit();
 }
 
@@ -210,10 +210,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update_profile'])) {
     <header>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="user_profile.php">Profile</a></li>
-                <li><a href="cv.php">CV</a></li>
-                <li><a href="projects.php">Mes projets</a></li>
+                <li><a href="../../index.php">Home</a></li>
+                <li><a href="../user_profile.php">Profile</a></li>
+                <li><a href="../cv.php">CV</a></li>
+                <li><a href="../projects.php">Mes projets</a></li>
                 <li><a href="logout.php">Déconnexion</a></li>
             </ul>
         </nav>
@@ -246,7 +246,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update_profile'])) {
 
                 <div class="button-group">
                     <button type="submit" name="update_profile" class="button update-button">Update Profile</button>
-                    <a href="user_profile.php" class="button cancel-button">Cancel</a>
+                    <a href="../user_profile.php" class="button cancel-button">Cancel</a>
                 </div>
             </form>
         </div>

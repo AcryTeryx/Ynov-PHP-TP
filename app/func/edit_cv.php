@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mysqli = require __DIR__ . '/database.php';
+$mysqli = require __DIR__ . '/../../database.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');

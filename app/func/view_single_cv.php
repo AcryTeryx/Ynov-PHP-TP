@@ -1,9 +1,9 @@
 <?php
 session_start();
-$mysqli = require __DIR__ . '/database.php';
+$mysqli = require __DIR__ . '/../../database.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: /app/login.php');
     exit();
 }
 
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_cv'])) {
     $delete_stmt = $mysqli->prepare($delete_query);
     $delete_stmt->bind_param('ii', $cv_id, $_SESSION['user_id']);
     if ($delete_stmt->execute()) {
-        header("Location: cv.php");
+        header("Location: /app/header.php");
         exit();
     } else {
         echo "Erreur lors de la suppression du CV.";
@@ -43,10 +43,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_cv'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/view_cv.css">
+    <link rel="stylesheet" href="/../../styles/view_cv.css">
+    <link rel="stylesheet" href="/../../styles/header.css">
     <title>Voir le CV</title>
 </head>
-<?php include 'header.php'; ?>
+<?php include __DIR__ . '/../header.php'; ?>
 <body>
     <div class="container">
         <h1><?php echo htmlspecialchars($cv['title']); ?></h1>
@@ -68,6 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_cv'])) {
             <button type="submit" name="delete_cv" class="btn-delete">Supprimer</button>
         </form>
     </div>
-    <?php include 'footer.php'; ?>
+    <?php include __DIR__ .'/../footer.php'; ?>
 </body>
 </html>

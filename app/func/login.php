@@ -3,37 +3,54 @@ $mode = isset($_GET['mode']) && $_GET['mode'] === 'signup' ? 'signup' : 'login';
 $is_invalid = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $mysqli = require __DIR__ . "/database.php";
-  
+    $mysqli = require __DIR__ . "/../../database.php";
 
-  $sql = "SELECT * FROM users WHERE email = ?";
-  $stmt = $mysqli->prepare($sql);
-  $stmt->bind_param("s", $_POST["email"]);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  
-  if ($result) {
-      $user = $result->fetch_assoc();
-      
-      if ($user) {
-          if (password_verify($_POST["password"], $user["password"])) {
-              session_start();
-              session_regenerate_id();
-              $_SESSION["user_id"] = $user["id"];
-              header("Location: index.php");
-              exit;
-          }
-      }
-  } else {
-      echo "Error: " . $mysqli->error;
-  }
-  
-  $is_invalid = true;
+    if ($mode === 'login') {
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("s", $_POST["email"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result) {
+            $user = $result->fetch_assoc();
+
+            if ($user && password_verify($_POST["password"], $user["password"])) {
+                session_start();
+                session_regenerate_id();
+                $_SESSION["user_id"] = $user["id"];
+                header("Location: /../index.php");
+                exit;
+            }
+        }
+        $is_invalid = true;
+    } elseif ($mode === 'signup') {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+
+        if ($password !== $confirm_password) {
+            $is_invalid = true;
+        } else {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO users (email, first_name, last_name, password, role) VALUES (?, ?, ?, ?, 'user')";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param("ssss", $email, $username, $username, $hashed_password);
+
+            if ($stmt->execute()) {
+                session_start();
+                session_regenerate_id();
+                $_SESSION["user_id"] = $stmt->insert_id;
+                header("Location: /../index.php");
+                exit;
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+        }
+    }
 }
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -112,35 +129,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1><?php echo ucfirst($mode); ?></h1>
-        
-        <?php if ($is_invalid): ?>
+<div class="container">
+    <h1><?php echo ucfirst($mode); ?></h1>
+
+    <?php if ($is_invalid): ?>
         <p class="error">Invalid Email or Password</p>
+    <?php endif; ?>
+
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?mode=$mode"); ?>">
+        <?php if ($mode === 'signup'): ?>
+            <input type="text" name="username" placeholder="Username" required>
         <?php endif; ?>
 
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?mode=$mode"); ?>">
-            <?php if ($mode === 'signup'): ?>
-            <input type="text" name="username" placeholder="Username" required>
-            <?php endif; ?>
-            
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            
-            <?php if ($mode === 'signup'): ?>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <?php if ($mode === 'signup'): ?>
             <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-            <?php endif; ?>
-            
-            <button type="submit"><?php echo ucfirst($mode); ?></button>
-        </form>
-        
-        <div class="toggle-mode">
-            <?php if ($mode === 'login'): ?>
+        <?php endif; ?>
+
+        <button type="submit"><?php echo ucfirst($mode); ?></button>
+    </form>
+
+    <div class="toggle-mode">
+        <?php if ($mode === 'login'): ?>
             <a href="?mode=signup">Need an account? Sign Up</a>
-            <?php else: ?>
+        <?php else: ?>
             <a href="?mode=login">Already have an account? Login</a>
-            <?php endif; ?>
-        </div>
+        <?php endif; ?>
     </div>
+</div>
 </body>
 </html>

@@ -2,11 +2,11 @@
 session_start();
 
 
-$mysqli = require __DIR__ . '/database.php';
+$mysqli = require __DIR__ . '/../database.php';
 
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: /app/func/login.php');
     exit();
 }
 
@@ -58,48 +58,11 @@ $projects = $result->fetch_all(MYSQLI_ASSOC);
             margin-bottom: 1.5rem;
         }
 
-        .project-card {
-            background-color: #2d3748;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .project-card:hover {
-            transform: scale(1.02);
-        }
-
-        .project-title {
-            font-size: 1.5em;
-            margin: 0;
-            padding-bottom: 10px;
-            color: #63b3ed;
-        }
-
-        .project-description {
-            color: #a0aec0;
-            margin-bottom: 20px;
-        }
-
         .validation-status {
             font-weight: bold;
             padding: 10px;
             border-radius: 5px;
             display: inline-block;
-        }
-
-        .validated {
-            color: #68d391;
-            background-color: #2f855a;
-            border: 1px solid #38a169;
-        }
-
-        .pending {
-            color: #faf089;
-            background-color: #744210;
-            border: 1px solid #975a16;
         }
 
         header, footer {
@@ -146,7 +109,7 @@ $projects = $result->fetch_all(MYSQLI_ASSOC);
     <div class="container">
         <h1>Mes Projets</h1>
 
-        <a href="create_projects.php">Ajouter un nouveau projet</a>
+        <a href="func/create_projects.php">Ajouter un nouveau projet</a>
 
         <?php if (count($projects) > 0): ?>
             <ul>
@@ -167,7 +130,7 @@ $projects = $result->fetch_all(MYSQLI_ASSOC);
         <?php endif; ?>
     </div>
     <footer>
-        <?php include 'footer.php'?>
+        <?php include 'footer.php' ?>
     </footer>
 </body>
 </html>

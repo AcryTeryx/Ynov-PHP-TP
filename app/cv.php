@@ -1,34 +1,27 @@
 <?php
 session_start();
-
-$mysqli = require __DIR__ . '/database.php';
+$mysqli = require __DIR__ . '/../database.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: /app/func/login.php');
     exit();
 }
 
 $user_id = $_SESSION['user_id'];
-
-
-$query = "SELECT * FROM users WHERE id = ?";
+$query = "SELECT * FROM cvs WHERE user_id = ?";
 $stmt = $mysqli->prepare($query);
 $stmt->bind_param('i', $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
-$user = $result->fetch_assoc();
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
-}
+$cvs = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Gestionnaire de CV</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -66,55 +59,61 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         main {
             flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 2rem;
         }
-        .profile-container {
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             background-color: #2d3748;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 2rem;
-            width: 100%;
-            max-width: 500px;
         }
         h1 {
             color: #63b3ed;
             text-align: center;
             margin-bottom: 1.5rem;
         }
-        .profile-info {
+        .cv-list {
             display: grid;
             gap: 1rem;
         }
-        .info-group {
+        .cv-item {
+            background-color: #4a5568;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+        .cv-item h2 {
+            color: #63b3ed;
+            margin-top: 0;
+        }
+        .button-group {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #4a5568;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
         }
-        .info-label {
-            font-weight: bold;
-            color: #a0aec0;
-        }
-        .info-value {
-            color: #fff;
-        }
-        .edit-button {
-            background-color: #3182ce;
-            color: #fff;
+        .button {
+            padding: 0.5rem 1rem;
             border: none;
             border-radius: 4px;
-            padding: 0.5rem 1rem;
             cursor: pointer;
             font-size: 1rem;
             transition: background-color 0.3s;
-            margin-top: 1rem;
+            text-decoration: none;
+            color: #fff;
         }
-        .edit-button:hover {
+        .create-button {
+            background-color: #3182ce;
+        }
+        .create-button:hover {
             background-color: #2c5282;
+        }
+        .view-button {
+            background-color: #48bb78;
+        }
+        .view-button:hover {
+            background-color: #38a169;
         }
         footer {
             background-color: #2f4f6f;
@@ -139,37 +138,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <header>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="user_profile.php">Profile</a></li>
-                <li><a href="cv.php">CV</a></li>
-                <li><a href="projects.php">Mes projets</a></li>
-                <li><a href="logout.php">Déconnexion</a></li>
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="../app/user_profile.php">Profile</a></li>
+                <li><a href="/app/cv.php">CV</a></li>
+                <li><a href="/app/projects.php">Mes projets</a></li>
+                <li><a href="/app/func/logout.php">Déconnexion</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <div class="profile-container">
-            <h1>User Profile</h1>
-            <div class="profile-info">
-                <div class="info-group">
-                    <span class="info-label">Name:</span>
-                    <span class="info-value"><?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name']); ?></span>
-                </div>
-                <div class="info-group">
-                    <span class="info-label">Email:</span>
-                    <span class="info-value"><?php echo htmlspecialchars($user['email']); ?></span>
-                </div>
-                <div class="info-group">
-                    <span class="info-label">Role:</span>
-                    <span class="info-value"><?php echo htmlspecialchars($user['role']); ?></span>
-                </div>
-                <div class="info-group">
-                    <span class="info-label">Account Created:</span>
-                    <span class="info-value"><?php echo htmlspecialchars($user['created_at']); ?></span>
-                </div>
+        <div class="container">
+            <h1>Gestionnaire de CV</h1>
+            <div class="button-group">
+                <a href="func/create_cv.php" class="button create-button">Créer un nouveau CV</a>
             </div>
-            <button class="edit-button" onclick="location.href='user_profile_edit.php'">Edit Profile</button>
+            <div class="cv-list">
+                <?php if (count($cvs) > 0): ?>
+                    <?php foreach ($cvs as $cv): ?>
+                        <div class="cv-item">
+                            <h2><?= htmlspecialchars($cv['title']) ?></h2>
+                            <p><?= htmlspecialchars($cv['description']) ?></p>
+                            <p>Créé le : <?= htmlspecialchars($cv['created_at']) ?></p>
+                            <a href="func/view_single_cv.php?id=<?= $cv['id'] ?>" class="button view-button">Voir ce CV</a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Aucun CV trouvé. Créez votre premier CV !</p>
+                <?php endif; ?>
+            </div>
         </div>
     </main>
 
