@@ -15,6 +15,7 @@
                 <li><a href="/app/cv.php">CV</a></li>
                 <li><a href="/app/projects.php">My projets</a></li>
                 <li><a href="/app/public_project.php">All Projects</a></li>
+                <li><a href="/app/public_cv.php">All Cv</a></li>
                 <li><a href="/app/func/logout.php">Log out</a></li>
             </ul>
         </nav>
