@@ -57,7 +57,9 @@ Ce projet consiste à réaliser un site web de CV/Portfolio comprenant plusieurs
 ## Installation
 
 1. Clonez ce dépôt.
-2. Démarrez le serveur local avec `Laragon` et déposez ce répo dans le fichier laragon `www`.
+2. Installez Laragon et phpMyAdmin. 
+3. Importez la base de données `portfolio.sql` dans PhpMyAdmin. 
+4. Déposez ce répo dans le fichier laragon `www` et démarrez le serveur local avec `Laragon`.
 
 ## Utilisation
 
